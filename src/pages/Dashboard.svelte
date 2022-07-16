@@ -5,7 +5,6 @@
 
 <div>
     <NavBar />
-
     <Footer />
 </div>
 
