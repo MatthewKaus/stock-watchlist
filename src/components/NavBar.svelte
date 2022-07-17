@@ -3,7 +3,9 @@
 <div>
     <div class="navbar bg-base-100">
         <div class="navbar-start">
-            <a class="btn btn-ghost normal-case text-xl">Stock WatchList</a>
+            <a href="/#/dashboard" class="btn btn-ghost normal-case text-xl"
+                ><img src="./5198491.ico" width="30vh" /> Stock WatchList</a
+            >
         </div>
         <div class="navbar-center">
             <div class="form-control">

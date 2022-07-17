@@ -1,17 +1,23 @@
 <script>
   import TailwindCSS from "./TailwindCSS.svelte";
-  // import Dashboard from "./pages/Dashboard.svelte";
+  import Dashboard from "./pages/Dashboard.svelte";
   import Home from "./pages/Home.svelte";
-  import LoginPage from "./pages/LoginPage.svelte";
+  import SignIn from "./pages/SignIn.svelte";
+  import SignUp from './pages/SignUp.svelte'
 
+  import Router from "svelte-spa-router";
+  let routes = {
+    "/": Home,
+    "/dashboard": Dashboard,
+    "/signin": SignIn,
+    "/signup": SignUp,
+  };
 </script>
 
 <TailwindCSS />
 
 <main>
-  <!-- <Dashboard /> -->
-  <Home />
-  <LoginPage />
+  <Router {routes} />
 </main>
 
 <style>
