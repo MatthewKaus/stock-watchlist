@@ -4,15 +4,13 @@
     import ImageThree from "/assets/images/Stock-Three.jpg";
     import ImageFour from "/assets/images/Stock-Four.jpg";
 
-    import { fade } from "svelte/transition";
-
     const backgroundArray = [ImageOne, ImageTwo, ImageThree, ImageFour];
 
     const background =
         backgroundArray[Math.floor(Math.random() * backgroundArray.length)];
 </script>
 
-<div out:fade>
+<div>
     <div class="hero min-h-screen" style="background-image: url({background});">
         <div class="hero-overlay bg-opacity-60" />
         <div class="hero-content text-center text-neutral-content">

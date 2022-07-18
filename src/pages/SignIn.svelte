@@ -24,6 +24,7 @@
                             type="text"
                             placeholder="email"
                             class="input input-bordered"
+                            id="email"
                         />
                     </div>
                     <div class="form-control">
@@ -34,6 +35,7 @@
                             type="text"
                             placeholder="password"
                             class="input input-bordered"
+                            id="password"
                         />
                         <label class="label">
                             <a href="#" class="label-text-alt link link-hover"
