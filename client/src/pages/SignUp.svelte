@@ -1,4 +1,8 @@
 <script>
+    import { mutation } from "svelte-apollo";
+    import { ADD_USER } from "../utils/mutations";
+
+    const singUpForm = () => alert("You submit the form") ;
 </script>
 
 <div>
@@ -16,76 +20,52 @@
                 class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100"
             >
                 <div class="card-body">
-
-
-
-
-
-
-
-
-
-
-
-
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Username</span>
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="username"
-                            class="input input-bordered"
-                            id="username"
-                        />
-                    </div>
-
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Email</span>
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="email"
-                            class="input input-bordered"
-                            id="email"
-                        />
-                    </div>
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Password</span>
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="password"
-                            class="input input-bordered"
-                            id="password"
-                        />
-                    </div>
-                    <div class="form-control mt-6">
-                        <button type="submit" class="btn btn-primary"
-                            >Sign Up</button
-                        >
-                    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    //////
+                    <form on:submit|preventDefault={singUpForm}>
+                        <div class="form-control">
+                            <label for="signup" class="label">
+                                <span class="label-text">Username</span>
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="username"
+                                class="input input-bordered"
+                                id="username"
+                            />
+                        </div>
+                        <div class="form-control">
+                            <label for="signup" class="label">
+                                <span class="label-text">Email</span>
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="email"
+                                class="input input-bordered"
+                                id="email"
+                            />
+                        </div>
+                        <div class="form-control">
+                            <label for="signup" class="label">
+                                <span class="label-text">Password</span>
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="password"
+                                class="input input-bordered"
+                                id="password"
+                            />
+                        </div>
+                        <div class="form-control mt-6">
+                            <button type="submit" class="btn btn-primary"
+                                >Sign Up</button
+                            >
+                        </div>
+                    </form>
+                    //////
 
                     <hr />
                     <div>
-                        <label class="label">
+                        <label for="signup" class="label">
                             <p>
                                 Already a user?
                                 <a
@@ -101,6 +81,3 @@
         </div>
     </div>
 </div>
-
-<style>
-</style>
