@@ -3,9 +3,7 @@
     import ImageTwo from "/assets/images/Stock-Two.jpg";
     import ImageThree from "/assets/images/Stock-Three.jpg";
     import ImageFour from "/assets/images/Stock-Four.jpg";
-
     const backgroundArray = [ImageOne, ImageTwo, ImageThree, ImageFour];
-
     const background =
         backgroundArray[Math.floor(Math.random() * backgroundArray.length)];
 </script>

@@ -12,15 +12,14 @@
                 <input
                     type="text"
                     placeholder="Search"
-                    class="input input-bordered"
+                    class="input input-bordered w-full"
                 />
             </div>
         </div>
         <div class="navbar-end">
             <ul class="menu menu-horizontal p-0">
-                <li><a>Item 1</a></li>
-                <li><a>Item 2</a></li>
-                <li><a>Item 3</a></li>
+                <li><a href="">Lists</a></li>
+                <li><a href="">Logout</a></li>
             </ul>
         </div>
     </div>
