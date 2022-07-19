@@ -1,8 +1,20 @@
 <script>
     import { mutation } from "svelte-apollo";
     import { ADD_USER } from "../utils/mutations";
+    import { createForm } from "svelte-forms-lib";
+    import Profile from "./Profile.svelte";
+    import * as yup from "yup";
 
-    const singUpForm = () => alert("You submit the form") ;
+    const { form, handleChange, handleSubmit } = createForm({
+        initialValues: {
+            username: "",
+            email: "",
+            password: "",
+        },
+        onSubmit: (values) => {
+            alert(JSON.stringify(values));
+        },
+    });
 </script>
 
 <div>
@@ -21,7 +33,7 @@
             >
                 <div class="card-body">
                     //////
-                    <form on:submit|preventDefault={singUpForm}>
+                    <form on:submit|preventDefault={handleSubmit}>
                         <div class="form-control">
                             <label for="signup" class="label">
                                 <span class="label-text">Username</span>
@@ -31,6 +43,9 @@
                                 placeholder="username"
                                 class="input input-bordered"
                                 id="username"
+                                name="username"
+                                on:change={handleChange}
+                                bind:value={$form.username}
                             />
                         </div>
                         <div class="form-control">
@@ -42,6 +57,9 @@
                                 placeholder="email"
                                 class="input input-bordered"
                                 id="email"
+                                name="username"
+                                on:change={handleChange}
+                                bind:value={$form.email}
                             />
                         </div>
                         <div class="form-control">
@@ -53,6 +71,9 @@
                                 placeholder="password"
                                 class="input input-bordered"
                                 id="password"
+                                name="username"
+                                on:change={handleChange}
+                                bind:value={$form.password}
                             />
                         </div>
                         <div class="form-control mt-6">

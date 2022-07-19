@@ -24,6 +24,8 @@
     "jwt-decode": "^2.2.0",
     "svelte-apollo": "^0.5.0",
     "svelte-chartjs": "^1.1.4",
-    "svelte-spa-router": "^3.2.0"
+    "svelte-forms-lib": "^2.0.1",
+    "svelte-spa-router": "^3.2.0",
+    "yup": "^0.32.11"
   }
 }

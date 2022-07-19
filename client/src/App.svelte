@@ -33,7 +33,7 @@
 
 <main>
   <Router {routes} />
-  <StockView />
+  <!-- <StockView /> -->
 </main>
 
 <style>
