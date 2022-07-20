@@ -7,6 +7,7 @@
   import SignIn from "./pages/SignIn.svelte";
   import SignUp from "./pages/SignUp.svelte";
   import StockView from "./components/StockView.svelte";
+  import List from "./components/List.svelte";
 
   // Svelte routing
   import Router from "svelte-spa-router";
@@ -23,6 +24,7 @@
 <main>
   <Router {routes} />
   <!-- <StockView /> -->
+  <List />
 </main>
 
 <style>
