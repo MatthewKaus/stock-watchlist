@@ -5,12 +5,17 @@
     import Profile from "./Profile.svelte";
     import * as yup from "yup";
 
-    const { form, handleChange, handleSubmit } = createForm({
+    const { form, errors, state, handleChange, handleSubmit } = createForm({
         initialValues: {
             username: "",
             email: "",
             password: "",
         },
+        validationSchema: yup.object().shape({
+            username: yup.string().required(),
+            email: yup.string().email().required(),
+            password: yup.string().required(),
+        }),
         onSubmit: (values) => {
             alert(JSON.stringify(values));
         },
@@ -32,7 +37,6 @@
                 class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100"
             >
                 <div class="card-body">
-                    //////
                     <form on:submit|preventDefault={handleSubmit}>
                         <div class="form-control">
                             <label for="signup" class="label">
@@ -45,8 +49,12 @@
                                 id="username"
                                 name="username"
                                 on:change={handleChange}
+                                on:blur={handleChange}
                                 bind:value={$form.username}
                             />
+                            {#if $errors.username}
+                                <small>{$errors.username}</small>
+                            {/if}
                         </div>
                         <div class="form-control">
                             <label for="signup" class="label">
@@ -57,10 +65,14 @@
                                 placeholder="email"
                                 class="input input-bordered"
                                 id="email"
-                                name="username"
+                                name="email"
                                 on:change={handleChange}
+                                on:blur={handleChange}
                                 bind:value={$form.email}
                             />
+                            {#if $errors.email}
+                                <small>{$errors.email}</small>
+                            {/if}
                         </div>
                         <div class="form-control">
                             <label for="signup" class="label">
@@ -71,19 +83,22 @@
                                 placeholder="password"
                                 class="input input-bordered"
                                 id="password"
-                                name="username"
+                                name="password"
                                 on:change={handleChange}
+                                on:blur={handleChange}
                                 bind:value={$form.password}
                             />
+                            {#if $errors.password}
+                                <small>{$errors.password}</small>
+                            {/if}
                         </div>
+
                         <div class="form-control mt-6">
                             <button type="submit" class="btn btn-primary"
                                 >Sign Up</button
                             >
                         </div>
                     </form>
-                    //////
-
                     <hr />
                     <div>
                         <label for="signup" class="label">
