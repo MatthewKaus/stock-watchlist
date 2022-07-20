@@ -1,8 +1,5 @@
 <script>
-    import { mutation } from "svelte-apollo";
-    import { ADD_USER } from "../utils/mutations";
     import { createForm } from "svelte-forms-lib";
-    import Profile from "./Profile.svelte";
     import * as yup from "yup";
 
     const { form, errors, state, handleChange, handleSubmit } = createForm({
