@@ -1,4 +1,20 @@
 <script>
+    import { createForm } from "svelte-forms-lib";
+    import * as yup from "yup";
+
+    const { form, errors, state, handleChange, handleSubmit } = createForm({
+        initialValues: {
+            email: "",
+            password: "",
+        },
+        validationSchema: yup.object().shape({
+            email: yup.string().email().required(),
+            password: yup.string().required(),
+        }),
+        onSubmit: (values) => {
+            alert(JSON.stringify(values));
+        },
+    });
 </script>
 
 <div>
@@ -16,38 +32,57 @@
                 class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100"
             >
                 <div class="card-body">
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Email</span>
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="email"
-                            class="input input-bordered"
-                            id="email"
-                        />
-                    </div>
-                    <div class="form-control">
-                        <label class="label">
-                            <span class="label-text">Password</span>
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="password"
-                            class="input input-bordered"
-                            id="password"
-                        />
-                        <label class="label">
-                            <a href="#" class="label-text-alt link link-hover"
-                                >Forgot password?</a
+                    <form on:submit|preventDefault={handleSubmit}>
+                        <div class="form-control">
+                            <label class="label">
+                                <span class="label-text">Email</span>
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="email"
+                                class="input input-bordered"
+                                id="email"
+                                name="email"
+                                on:change={handleChange}
+                                on:blur={handleChange}
+                                bind:value={$form.email}
+                            />
+                            {#if $errors.email}
+                                <small>{$errors.email}</small>
+                            {/if}
+                        </div>
+                        <div class="form-control">
+                            <label class="label">
+                                <span class="label-text">Password</span>
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="password"
+                                class="input input-bordered"
+                                id="password"
+                                name="password"
+                                on:change={handleChange}
+                                on:blur={handleChange}
+                                bind:value={$form.password}
+                            />
+                            {#if $errors.password}
+                                <small>{$errors.password}</small>
+                            {/if}
+
+                            <label class="label">
+                                <a
+                                    href="#"
+                                    class="label-text-alt link link-hover"
+                                    >Forgot password?</a
+                                >
+                            </label>
+                        </div>
+                        <div class="form-control mt-6 ">
+                            <button href="/#/dashboard" class="btn btn-primary"
+                                >Login</button
                             >
-                        </label>
-                    </div>
-                    <div class="form-control mt-6 ">
-                        <button href="/#/dashboard" class="btn btn-primary"
-                            >Login</button
-                        >
-                    </div>
+                        </div>
+                    </form>
                     <hr />
                     <div>
                         <label class="label">
