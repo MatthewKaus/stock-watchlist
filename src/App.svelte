@@ -24,7 +24,7 @@
 <main>
   <Router {routes} />
   <!-- <StockView /> -->
-  <List />
+  <!-- <List /> -->
 </main>
 
 <style>

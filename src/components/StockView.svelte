@@ -3,7 +3,7 @@
 
     let symbol = "DJIA";
 
-    const URL = `https://cloud.iexapis.com/stable/stock/${symbol}/chart/1d?token=pk_f8e6e4aac42d46d6bd065871f17a8b0b`;
+    const URL = `https://cloud.iexapis.com/stable/stock/${symbol}/chart/30d?token=pk_f8e6e4aac42d46d6bd065871f17a8b0b`;
 
     const xValues = [];
     const dateLabels = [];
