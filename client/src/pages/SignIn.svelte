@@ -1,15 +1,34 @@
 <script>
     import { createForm } from "svelte-forms-lib";
     import * as yup from "yup";
+    import { getClient, query, mutation } from "svelte-apollo";
+    import { gql } from "apollo-boost";
+
+    const ADD_USER = gql`
+        mutation addUser(
+            $username: String!
+            $email: String!
+            $password: String!
+        ) {
+            addUser(username: $username, email: $email, password: $password) {
+                token
+                user {
+                    username
+                    email
+                }
+            }
+        }
+    `;
+
+    const addUser = mutation(ADD_USER);
+    const client = getClient();
 
     const { form, errors, state, handleChange, handleSubmit } = createForm({
         initialValues: {
-            username: "",
             email: "",
             password: "",
         },
         validationSchema: yup.object().shape({
-            username: yup.string().required(),
             email: yup.string().email().required(),
             password: yup.string().required(),
         }),
@@ -23,7 +42,7 @@
     <div class="hero min-h-screen bg-base-200 ">
         <div class="hero-content flex-col lg:flex-row-reverse">
             <div class="text-center lg:text-left">
-                <h1 class="text-5xl font-bold">Sign up now!</h1>
+                <h1 class="text-5xl font-bold">Login now!</h1>
                 <p class="py-6">
                     Provident cupiditate voluptatem et in. Quaerat fugiat ut
                     assumenda excepturi exercitationem quasi. In deleniti eaque
@@ -36,25 +55,7 @@
                 <div class="card-body">
                     <form on:submit|preventDefault={handleSubmit}>
                         <div class="form-control">
-                            <label for="signup" class="label">
-                                <span class="label-text">Username</span>
-                            </label>
-                            <input
-                                type="text"
-                                placeholder="username"
-                                class="input input-bordered"
-                                id="username"
-                                name="username"
-                                on:change={handleChange}
-                                on:blur={handleChange}
-                                bind:value={$form.username}
-                            />
-                            {#if $errors.username}
-                                <small>{$errors.username}</small>
-                            {/if}
-                        </div>
-                        <div class="form-control">
-                            <label for="signup" class="label">
+                            <label class="label">
                                 <span class="label-text">Email</span>
                             </label>
                             <input
@@ -72,7 +73,7 @@
                             {/if}
                         </div>
                         <div class="form-control">
-                            <label for="signup" class="label">
+                            <label class="label">
                                 <span class="label-text">Password</span>
                             </label>
                             <input
@@ -88,23 +89,30 @@
                             {#if $errors.password}
                                 <small>{$errors.password}</small>
                             {/if}
-                        </div>
 
-                        <div class="form-control mt-6">
-                            <button type="submit" class="btn btn-primary"
-                                >Sign Up</button
+                            <label class="label">
+                                <a
+                                    href="#"
+                                    class="label-text-alt link link-hover"
+                                    >Forgot password?</a
+                                >
+                            </label>
+                        </div>
+                        <div class="form-control mt-6 ">
+                            <button href="/#/dashboard" class="btn btn-primary"
+                                >Login</button
                             >
                         </div>
                     </form>
                     <hr />
                     <div>
-                        <label for="signup" class="label">
+                        <label class="label">
                             <p>
-                                Already a user?
+                                Not a user?
                                 <a
-                                    href="/#/signin"
+                                    href="/#/signup"
                                     class="label-text-alt link link-hover"
-                                    >LOGIN</a
+                                    >SIGN UP</a
                                 >
                             </p>
                         </label>
@@ -114,3 +122,6 @@
         </div>
     </div>
 </div>
+
+<style>
+</style>

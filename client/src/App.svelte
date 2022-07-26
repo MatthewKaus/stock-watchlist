@@ -17,6 +17,17 @@
     "/signin": SignIn,
     "/signup": SignUp,
   };
+
+  // ApolloClient
+  import { InMemoryCache, ApolloClient } from "@apollo/client/core";
+  import { setClient } from "svelte-apollo";
+
+  const client = new ApolloClient({
+    uri: "http://localhost:3001/graphql",
+    cache: new InMemoryCache(),
+  });
+  setClient(client);
+
 </script>
 
 <TailwindCSS />
