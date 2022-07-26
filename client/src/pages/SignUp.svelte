@@ -1,10 +1,12 @@
 <script>
     import { createForm } from "svelte-forms-lib";
     import * as yup from "yup";
+    import {push, pop, replace} from 'svelte-spa-router'
 
     import { getClient, query, mutation } from "svelte-apollo";
     import { gql } from "apollo-boost";
     import Auth from "../utils/auth";
+    import Router from "svelte-spa-router";
 
     const ADD_USER = gql`
         mutation addUser(
@@ -23,11 +25,10 @@
     `;
 
     const addUser = mutation(ADD_USER);
-    const client = getClient();
 
     async function submit(values) {
         try {
-            const data = await addUser({ variables: { ...values } })
+            const data = await addUser({ variables: { ...values } });
         } catch (error) {
             console.log(error);
             alert(error);
@@ -47,6 +48,7 @@
         }),
         onSubmit: (values) => {
             submit(values);
+            push('/dashboard')
         },
     });
 </script>
