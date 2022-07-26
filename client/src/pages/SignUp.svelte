@@ -1,34 +1,18 @@
 <script>
     import { createForm } from "svelte-forms-lib";
     import * as yup from "yup";
-    import {push, pop, replace} from 'svelte-spa-router'
+    import { push } from "svelte-spa-router";
 
-    import { getClient, query, mutation } from "svelte-apollo";
-    import { gql } from "apollo-boost";
+    import { mutation } from "svelte-apollo";
+    import { ADD_USER } from "../utils/mutations";
     import Auth from "../utils/auth";
-    import Router from "svelte-spa-router";
-
-    const ADD_USER = gql`
-        mutation addUser(
-            $username: String!
-            $email: String!
-            $password: String!
-        ) {
-            addUser(username: $username, email: $email, password: $password) {
-                token
-                user {
-                    username
-                    email
-                }
-            }
-        }
-    `;
-
+    
     const addUser = mutation(ADD_USER);
 
     async function submit(values) {
         try {
             const data = await addUser({ variables: { ...values } });
+            push("/dashboard");
         } catch (error) {
             console.log(error);
             alert(error);
@@ -48,7 +32,6 @@
         }),
         onSubmit: (values) => {
             submit(values);
-            push('/dashboard')
         },
     });
 </script>

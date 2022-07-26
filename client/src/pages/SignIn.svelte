@@ -1,27 +1,24 @@
 <script>
     import { createForm } from "svelte-forms-lib";
     import * as yup from "yup";
-    import { getClient, query, mutation } from "svelte-apollo";
+    import { push } from "svelte-spa-router";
+
+    import { mutation } from "svelte-apollo";
     import { gql } from "apollo-boost";
+    import Auth from "../utils/auth";
+    import { LOGIN_USER } from "../utils/mutations";
 
-    const ADD_USER = gql`
-        mutation addUser(
-            $username: String!
-            $email: String!
-            $password: String!
-        ) {
-            addUser(username: $username, email: $email, password: $password) {
-                token
-                user {
-                    username
-                    email
-                }
-            }
+    const getUser = mutation(LOGIN_USER);
+
+    async function submit(values) {
+        try {
+            const data = await getUser({ variables: { ...values } });
+            push("/dashboard");
+        } catch (error) {
+            console.log(error);
+            alert(error);
         }
-    `;
-
-    const addUser = mutation(ADD_USER);
-    const client = getClient();
+    }
 
     const { form, errors, state, handleChange, handleSubmit } = createForm({
         initialValues: {
@@ -33,7 +30,7 @@
             password: yup.string().required(),
         }),
         onSubmit: (values) => {
-            alert(JSON.stringify(values));
+            submit(values);
         },
     });
 </script>
