@@ -12,8 +12,8 @@
     fetch(URL)
         .then((res) => res.json())
         .then((data) => {
-            // console.log(data);
-            companyName = data[0].label;
+            console.log(data);
+            companyName = data[1].symbol;
             for (let i = 0; i < data.length; i++) {
                 xValues.push(data[i].close);
                 dateLabels.push(data[i].label);
@@ -25,7 +25,7 @@
         labels: dateLabels,
         datasets: [
             {
-                label: companyName,
+                title: companyName,
                 fill: true,
                 lineTension: 0.3,
                 backgroundColor: "rgba(225, 204,230, .3)",
@@ -49,4 +49,4 @@
     };
 </script>
 
-<Line data={dataLine} options={{ responsive: true }} />
+    <Line data={dataLine} options={{ responsive: true }} />
