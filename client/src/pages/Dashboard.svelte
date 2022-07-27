@@ -12,7 +12,6 @@
         <div
             class="grid flex-grow card bg-base-300 rounded-box place-items-center"
         >
-            <h1>Header</h1>
             <StockView />
         </div>
         <div class="divider lg:divider-horizontal" />

@@ -1,7 +1,7 @@
 <script>
     import Line from "svelte-chartjs/src/Line.svelte";
 
-    let symbol = "DJIA";
+    let symbol = "AAPL";
 
     const URL = `https://cloud.iexapis.com/stable/stock/${symbol}/chart/30d?token=pk_f8e6e4aac42d46d6bd065871f17a8b0b`;
 
