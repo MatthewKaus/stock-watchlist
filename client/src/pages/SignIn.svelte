@@ -10,10 +10,15 @@
 
     const getUser = mutation(LOGIN_USER);
 
+    function nextPage() {
+        push("/dashboard");
+    }
+
     async function submit(values) {
         try {
             const data = await getUser({ variables: { ...values } });
-            push("/dashboard");
+            Auth.login(data.data.login.token);
+            nextPage();
         } catch (error) {
             console.log(error);
             alert(error);

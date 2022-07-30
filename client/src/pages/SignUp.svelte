@@ -6,13 +6,18 @@
     import { mutation } from "svelte-apollo";
     import { ADD_USER } from "../utils/mutations";
     import Auth from "../utils/auth";
-    
+
     const addUser = mutation(ADD_USER);
+
+    function nextPage() {
+        push("/dashboard");
+    }
 
     async function submit(values) {
         try {
             const data = await addUser({ variables: { ...values } });
-            push("/dashboard");
+            Auth.login(data.data.addUser.token);
+            nextPage();
         } catch (error) {
             console.log(error);
             alert(error);
