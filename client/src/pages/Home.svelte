@@ -1,4 +1,6 @@
 <script>
+    import Auth from "../utils/auth";
+
     import ImageOne from "/assets/images/Stock-One.jpg";
     import ImageTwo from "/assets/images/Stock-Two.jpg";
     import ImageThree from "/assets/images/Stock-Three.jpg";
@@ -19,7 +21,12 @@
                     Aliquid enim sed molestiae debitis placeat perspiciatis
                     reiciendis error nemo laudantium numquam quia, nam
                 </p>
-                <a href="/#/signin" class="btn btn-primary">Get Started</a>
+
+                {#if Auth.loggedIn()}
+                    <a href="/#/Dashboard" class="btn btn-primary">Return</a>
+                {:else}
+                    <a href="/#/signin" class="btn btn-primary">Get Started</a>
+                {/if}
             </div>
         </div>
     </div>

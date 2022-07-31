@@ -1,9 +1,5 @@
 <script>
     import Auth from "../utils/auth";
-
-    const logOut = () => {
-        Auth.logout();
-    };
 </script>
 
 <div>
@@ -25,7 +21,7 @@
         <div class="navbar-end">
             <ul class="menu menu-horizontal p-0">
                 <li><a href="">Lists</a></li>
-                <li><button on:click={logOut}>Logout</button></li>
+                <li><button on:click={Auth.logout}>Logout</button></li>
             </ul>
         </div>
     </div>
