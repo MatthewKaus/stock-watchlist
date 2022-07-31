@@ -23,7 +23,7 @@
   import { setClient } from "svelte-apollo";
 
   const client = new ApolloClient({
-    uri: "http://localhost:3001/graphql",
+    uri: "https://stock-watchlist-server.herokuapp.com/graphql",
     cache: new InMemoryCache(),
   });
   setClient(client);
