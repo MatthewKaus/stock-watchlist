@@ -25,6 +25,13 @@
                 tabindex="0"
                 class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
+                <div class="form-control">
+                    <input
+                        type="text"
+                        placeholder="Search"
+                        class="input input-bordered w-full"
+                    />
+                </div>
                 <li><a href="">Lists</a></li>
                 <li><button on:click={Auth.logout}>Logout</button></li>
             </ul>

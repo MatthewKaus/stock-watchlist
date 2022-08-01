@@ -11,7 +11,7 @@
 
     <div class="flex flex-col w-full border-opacity-50">
         <div class="grid  card bg-base-300 rounded-box place-items-center">
-            <StockView />
+            <!-- <StockView /> -->
         </div>
         <div class="divider" />
         <div class="grid card bg-base-300 rounded-box place-items-center">

@@ -141,7 +141,7 @@
 </script>
 
 {#each data as data, i}
-    <div class="card card-side max-w-[1100px] bg-base-100 shadow-xl rounded-none">
+    <div class="card md:card-side max-w-[1100px] bg-base-100 shadow-xl rounded-none">
         <figure>
             <img class="w-[200px] h-[100px]" src={data.image_url} alt="" />
         </figure>
