@@ -4,21 +4,24 @@
     import StockView from "../components/StockView.svelte";
     import List from "../components/List.svelte";
 
+    let symbol = "djia";
 </script>
 
 <div>
     <NavBar />
-
-    <div class="flex flex-col w-full border-opacity-50">
-        <div class="grid  card bg-base-300 rounded-box place-items-center">
-            <StockView />
-        </div>
-        <div class="divider" />
-        <div class="grid card bg-base-300 rounded-box place-items-center">
-            <List />
+    <div class="flex">
+        <div class="flex flex-col w-full border-opacity-50">
+            <div
+                class="grid md:min-h-[1/2] card bg-base-300 rounded-box place-items-center"
+            >
+                <StockView {symbol} />
+            </div>
+            <div class="divider" />
+            <div class="grid card bg-base-300 rounded-box place-items-center">
+                <List {symbol} />
+            </div>
         </div>
     </div>
-
     <Footer />
 </div>
 
