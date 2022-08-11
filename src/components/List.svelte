@@ -1,20 +1,25 @@
 <script>
+    // const token = import.meta.env.VITE_STOCKNEWSAPI
+    // console.log(token)
 
-    export let symbol;
-    const URL = `https://stocknewsapi.com/api/v1?tickers=${symbol}&items=1&token=${token}`;
+    // export let symbol;
+    // const URL = `https://stocknewsapi.com/api/v1?tickers=${symbol}&items=1&token=${token}`;
 
-    async function fetchNewsJSON() {
-        const response = await fetch(URL);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        const news = data.data;
-        return news;
-    }
+    // async function fetchNewsJSON() {
+    //     const response = await fetch(URL);
+    //     if (!response.ok) {
+    //         throw new Error(`HTTP error! status: ${response.status}`);
+    //     }
+    //     const data = await response.json();
+    //     const news = data.data;
+    //     return news;
+    // }
+
+    import { fetchNewsJSON } from "../api";
+    // fetchNewsJSON()
 </script>
 
-{#await fetchNewsJSON()}
+{#await fetchNewsJSON("tsla")}
     <div role="status" class="flex justify-center items-center p-10 ">
         <svg
             aria-hidden="true"

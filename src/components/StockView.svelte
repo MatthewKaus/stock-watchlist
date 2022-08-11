@@ -1,7 +1,7 @@
 <script>
 
+    
     import Line from "svelte-chartjs/src/Line.svelte";
-
     export let symbol;
     const URL = `https://cloud.iexapis.com/stable/stock/${symbol}/chart/1d?token=${token}`;
 
@@ -90,4 +90,4 @@
             <span>{error}</span>
         </div>
     </div>
-    {/await}
+{/await}

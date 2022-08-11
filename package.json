@@ -9,8 +9,10 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@rollup/plugin-replace": "^4.0.0",
     "@sveltejs/vite-plugin-svelte": "^1.0.1",
     "autoprefixer": "^10.4.7",
+    "dotenv": "^16.0.1",
     "postcss": "^8.4.14",
     "svelte": "^3.49.0",
     "tailwindcss": "^3.1.6",
@@ -18,11 +20,11 @@
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
+    "@sveltejs/kit": "^1.0.0-next.405",
     "A": "^0.0.1",
     "apollo-boost": "^0.4.9",
     "chartjs": "^0.3.24",
     "daisyui": "^2.19.0",
-    "dotenv": "^16.0.1",
     "env-cmd": "^10.1.0",
     "graphql": "^15.8.0",
     "graphql-request": "^4.3.0",
