@@ -1,25 +1,21 @@
 <script>
-    // const token = import.meta.env.VITE_STOCKNEWSAPI
-    // console.log(token)
+    const token = import.meta.env.VITE_STOCKNEWSAPI;
 
-    // export let symbol;
-    // const URL = `https://stocknewsapi.com/api/v1?tickers=${symbol}&items=1&token=${token}`;
+    export let symbol;
+    const URL = `https://stocknewsapi.com/api/v1?tickers=${symbol}&items=1&token=${token}`;
 
-    // async function fetchNewsJSON() {
-    //     const response = await fetch(URL);
-    //     if (!response.ok) {
-    //         throw new Error(`HTTP error! status: ${response.status}`);
-    //     }
-    //     const data = await response.json();
-    //     const news = data.data;
-    //     return news;
-    // }
-
-    import { fetchNewsJSON } from "../api";
-    // fetchNewsJSON()
+    async function fetchNewsJSON() {
+        const response = await fetch(URL);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        const news = data.data;
+        return news;
+    }
 </script>
 
-{#await fetchNewsJSON("tsla")}
+{#await fetchNewsJSON()}
     <div role="status" class="flex justify-center items-center p-10 ">
         <svg
             aria-hidden="true"
@@ -40,6 +36,7 @@
         <span class="sr-only">Loading...</span>
     </div>
 {:then news}
+    {symbol}
     {#each news as news, i}
         <div
             class="card md:card-side max-w-[1100px] bg-base-100 shadow-xl rounded-none"

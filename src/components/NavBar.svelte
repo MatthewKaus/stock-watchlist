@@ -1,5 +1,21 @@
 <script>
     import Auth from "../utils/auth";
+    import { createForm } from "svelte-forms-lib";
+    export let stock;
+
+    async function submit(values) {
+        let symbol = values.symbol;
+        return (stock = symbol);
+    }
+
+    const { form, errors, state, handleChange, handleSubmit } = createForm({
+        initialValues: {
+            symbol: "",
+        },
+        onSubmit: (values) => {
+            submit(values);
+        },
+    });
 </script>
 
 <div class="navbar bg-base-100">
@@ -25,37 +41,52 @@
                 tabindex="0"
                 class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-                <div class="form-control">
-                    <input
-                        type="text"
-                        placeholder="Search"
-                        class="input input-bordered w-full"
-                    />
-                </div>
-                <li><a href="">Lists</a></li>
+                <form on:submit|preventDefault={handleSubmit}>
+                    <div class="form-control">
+                        <input
+                            type="text"
+                            placeholder="Search"
+                            class="input input-bordered w-full"
+                            id="search"
+                            name="search"
+                            on:change={handleChange}
+                            on:blur={handleChange}
+                            bind:value={$form.symbol}
+                        />
+                    </div>
+                </form>
+                <li><a href="./">Lists</a></li>
                 <li><button on:click={Auth.logout}>Logout</button></li>
             </ul>
         </div>
         <a href="/#/dashboard" class="btn btn-ghost normal-case text-xl"
-            ><img src="./5198491.ico" width="30vh" /> Stock WatchList</a
+            ><img src="./5198491.ico" width="30vh" alt="Stock chart logo" /> Stock
+            WatchList</a
         >
     </div>
     <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal p-0">
             <div class="navbar-center">
-                <div class="form-control">
-                    <input
-                        type="text"
-                        placeholder="Search"
-                        class="input input-bordered w-full"
-                    />
-                </div>
+                <form on:submit|preventDefault={handleSubmit}>
+                    <div class="form-control">
+                        <input
+                            type="text"
+                            placeholder="Search"
+                            class="input input-bordered w-full"
+                            id="search"
+                            name="search"
+                            on:change={handleChange}
+                            on:blur={handleChange}
+                            bind:value={$form.symbol}
+                        />
+                    </div>
+                </form>
             </div>
         </ul>
     </div>
     <div class="navbar-end hidden lg:flex">
         <ul class="menu menu-horizontal p-0">
-            <li><a href="">Lists</a></li>
+            <li><a href="./">Lists</a></li>
             <li><button on:click={Auth.logout}>Logout</button></li>
         </ul>
     </div>

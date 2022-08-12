@@ -1,15 +1,24 @@
 <script>
-
-    
     import Line from "svelte-chartjs/src/Line.svelte";
+    import { onMount, afterUpdate } from "svelte";
+    const token = import.meta.env.VITE_STOCKVIEWAPI;
     export let symbol;
-    const URL = `https://cloud.iexapis.com/stable/stock/${symbol}/chart/1d?token=${token}`;
+
+    $: {
+        console.log(symbol);
+        recall();
+    }
+
+    const recall = () => {
+        console.log("recall");
+    };
 
     const xValues = [];
     const dateLabels = [];
     let companyName = "";
 
     async function fetchChartJSON() {
+        const URL = `https://cloud.iexapis.com/stable/stock/${symbol}/chart/1d?token=${token}`;
         const response = await fetch(URL);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -19,7 +28,6 @@
             xValues.push(data[i].close);
             dateLabels.push(data[i].label);
         }
-        // console.log(data);
     }
 
     let dataLine = {
@@ -72,6 +80,7 @@
     </div>
 {:then}
     <Line data={dataLine} options={{ responsive: true }} />
+    {symbol}
 {:catch error}
     <div class="alert alert-error shadow-lg">
         <div>
