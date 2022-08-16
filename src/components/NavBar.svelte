@@ -55,7 +55,7 @@
                         />
                     </div>
                 </form>
-                <li><a href="./">Lists</a></li>
+                <!-- <li><a href="./">Lists</a></li> -->
                 <li><button on:click={Auth.logout}>Logout</button></li>
             </ul>
         </div>
@@ -86,7 +86,7 @@
     </div>
     <div class="navbar-end hidden lg:flex">
         <ul class="menu menu-horizontal p-0">
-            <li><a href="./">Lists</a></li>
+            <!-- <li><a href="./">Lists</a></li> -->
             <li><button on:click={Auth.logout}>Logout</button></li>
         </ul>
     </div>
