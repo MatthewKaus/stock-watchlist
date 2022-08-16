@@ -2,6 +2,12 @@
   <h1>Stock Watchlist</h1>
 </div>
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/88aac3cb-e1ab-4650-842e-255c378293bd/deploy-status)](https://matthewkaus-stock-watchlist.netlify.app)
+
+URL to Deployed Site: https://matthewkaus-stock-watchlist.netlify.app
+
+URL to Repository: https://github.com/MatthewKaus/stock-watchlist
+
 ![Stock Watchlist Website](./public/assets/images/screencapture-127-0-0-1-5173-2022-08-15-19_13_20.png)
 
 ## Description
