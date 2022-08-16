@@ -1,71 +1,30 @@
 <script>
-    import Line from "svelte-chartjs/src/Line.svelte";
-    const token = import.meta.env.VITE_STOCKVIEWAPI;
+    const token = import.meta.env.VITE_STOCKNEWSAPI;
+
     export let symbol;
 
-    // $: {
-    //     recall();
-    // }
+    $: {
+        recall();
+    }
 
-    // const recall = () => {
-    //     xValues.length = 0;
-    //     dateLabels.length = 0;
-    //     console.log(xValues, dateLabels)
-    //     fetchChartJSON();
-    // };
+    const recall = () => {
+        fetchNewsJSON();
+    };
 
-    let xValues = [];
-    let dateLabels = [];
-    let companyName = "";
-
-    async function fetchChartJSON() {
-        const URL = `https://cloud.iexapis.com/stable/stock/${symbol}/chart/1d?token=${token}`;
+    async function fetchNewsJSON() {
+        const URL = `https://stocknewsapi.com/api/v1?tickers=${symbol}&items=5&token=${token}`;
         const response = await fetch(URL);
-
-        xValues.length = 0;
-        dateLabels.length = 0;
-
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-
         const data = await response.json();
-        for (let i = 0; i < data.length; i++) {
-            xValues.push(data[i].close);
-            dateLabels.push(data[i].label);
-        }
+        const news = data.data;
+        return news;
     }
-
-    let dataLine = {
-        labels: dateLabels,
-        datasets: [
-            {
-                label: companyName,
-                fill: true,
-                lineTension: 0.3,
-                backgroundColor: "rgba(225, 204,230, .3)",
-                borderColor: "rgb(205, 130, 158)",
-                borderCapStyle: "butt",
-                borderDash: [],
-                borderDashOffset: 0.0,
-                borderJoinStyle: "miter",
-                pointBorderColor: "rgb(205, 130,1 58)",
-                pointBackgroundColor: "rgb(255, 255, 255)",
-                pointBorderWidth: 10,
-                pointHoverRadius: 5,
-                pointHoverBackgroundColor: "rgb(0, 0, 0)",
-                pointHoverBorderColor: "rgba(220, 220, 220,1)",
-                pointHoverBorderWidth: 2,
-                pointRadius: 1,
-                pointHitRadius: 10,
-                data: xValues,
-            },
-        ],
-    };
 </script>
 
 {#key symbol}
-    {#await fetchChartJSON()}
+    {#await fetchNewsJSON()}
         <div role="status" class="flex justify-center items-center p-10 ">
             <svg
                 aria-hidden="true"
@@ -85,8 +44,24 @@
             </svg>
             <span class="sr-only">Loading...</span>
         </div>
-    {:then}
-        <Line data={dataLine} options={{ responsive: true }} />
+    {:then news}
+        {#each news as news, i}
+            <div
+                class="card md:card-side max-w-[1100px] bg-base-100 shadow-xl rounded-none"
+            >
+                <figure>
+                    <img
+                        class="w-[200px] h-[100px]"
+                        src={news.image_url}
+                        alt=""
+                    />
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">{news.title}</h2>
+                    <p>{news.text}</p>
+                </div>
+            </div>
+        {/each}
     {:catch error}
         <div class="alert alert-error shadow-lg">
             <div>

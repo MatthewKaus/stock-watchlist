@@ -2,9 +2,9 @@
     import NavBar from "../components/NavBar.svelte";
     import Footer from "../components/Footer.svelte";
     import StockView from "../components/StockView.svelte";
-    import List from "../components/List.svelte";
+    import NewsView from "../components/NewsView.svelte";
 
-    let symbol = "aapl";
+    let symbol = "djia";
 
 
 </script>
@@ -16,12 +16,11 @@
             <div
                 class="grid md:min-h-[1/2] card bg-base-300 rounded-box place-items-center"
             >
-                {symbol}
                 <StockView {symbol} />
             </div>
             <div class="divider" />
             <div class="grid card bg-base-300 rounded-box place-items-center">
-                <List {symbol} />
+                <NewsView {symbol} />
             </div>
         </div>
     </div>
