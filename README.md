@@ -9,7 +9,7 @@ With Stock WatchList, users are able to search for specific stocks and are given
 
 
 ## Technology 
-* <strong>Techstack</strong> - MongoDB, Express.js, React.js, Node
+* <strong>Techstack</strong> - MongoDB, Express.js, Svelte, Node, GraphQL
 * <strong>Styling</strong> - Tailwind, Daisy UI
 * <strong>Data Visualization</strong> - Chart.js
 * <strong>Deployment</strong> - Heroku
