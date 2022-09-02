@@ -14,6 +14,7 @@
     "autoprefixer": "^10.4.7",
     "dotenv": "^16.0.1",
     "postcss": "^8.4.14",
+    "simple-svelte-autocomplete": "^2.4.0",
     "svelte": "^3.49.0",
     "tailwindcss": "^3.1.6",
     "vite": "^3.0.0"
@@ -29,7 +30,9 @@
     "graphql": "^15.8.0",
     "graphql-request": "^4.3.0",
     "jwt-decode": "^2.2.0",
+    "svelecte": "^3.9.2",
     "svelte-apollo": "^0.5.0",
+    "svelte-autocomplete": "^0.0.4",
     "svelte-chartjs": "^1.1.4",
     "svelte-forms-lib": "^2.0.1",
     "svelte-spa-router": "^3.2.0",

@@ -16,6 +16,15 @@
             submit(values);
         },
     });
+
+    $: stock = selectedStockObject.ticker;
+
+    import AutoComplete from "simple-svelte-autocomplete";
+    import { stockData } from "../../src/utils/stockJson";
+
+    let selectedStockObject = stockData[0];
+    let highlightedStockObject;
+    let selectedStockValue;
 </script>
 
 <div class="navbar bg-base-100">
@@ -41,7 +50,7 @@
                 tabindex="0"
                 class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-                <form on:submit|preventDefault={handleSubmit}>
+                <!-- <form on:submit|preventDefault={handleSubmit}>
                     <div class="form-control">
                         <input
                             type="text"
@@ -54,7 +63,19 @@
                             bind:value={$form.symbol}
                         />
                     </div>
-                </form>
+                </form> -->
+                <AutoComplete
+                    class="input input-bordered w-full"
+                    items={stockData}
+                    bind:selectedItem={selectedStockObject}
+                    bind:highlightedItem={highlightedStockObject}
+                    bind:value={selectedStockValue}
+                    labelFieldName="name"
+                    valueFieldName="id"
+                    keywordsFunction={(stock) =>
+                        stock.name + " " + stock.ticker}
+                />
+
                 <!-- <li><a href="./">Lists</a></li> -->
                 <li><button on:click={Auth.logout}>Logout</button></li>
             </ul>
@@ -67,9 +88,9 @@
     <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal p-0">
             <div class="navbar-center">
-                <form on:submit|preventDefault={handleSubmit}>
-                    <div class="form-control">
-                        <input
+                <!-- <form on:submit|preventDefault={handleSubmit}>
+                    <div class="form-control"> -->
+                <!-- <input
                             type="text"
                             placeholder="Search"
                             class="input input-bordered w-full"
@@ -78,9 +99,21 @@
                             on:change={handleChange}
                             on:blur={handleChange}
                             bind:value={$form.symbol}
-                        />
-                    </div>
-                </form>
+                        /> -->
+
+                <AutoComplete
+                    class="input input-bordered w-full"
+                    items={stockData}
+                    bind:selectedItem={selectedStockObject}
+                    bind:highlightedItem={highlightedStockObject}
+                    bind:value={selectedStockValue}
+                    labelFieldName="name"
+                    valueFieldName="id"
+                    keywordsFunction={(stock) =>
+                        stock.name + " " + stock.ticker}
+                />
+                <!-- </div>
+                </form> -->
             </div>
         </ul>
     </div>
@@ -91,5 +124,3 @@
         </ul>
     </div>
 </div>
-
-<style></style>

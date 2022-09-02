@@ -46,21 +46,23 @@
         </div>
     {:then news}
         {#each news as news, i}
-            <div
-                class="card md:card-side max-w-[1100px] bg-base-100 shadow-xl rounded-none"
-            >
-                <figure>
-                    <img
-                        class="w-[200px] h-[100px]"
-                        src={news.image_url}
-                        alt=""
-                    />
-                </figure>
-                <div class="card-body">
-                    <h2 class="card-title">{news.title}</h2>
-                    <p>{news.text}</p>
+            <a href={news.news_url}>
+                <div
+                    class="card md:card-side max-w-[1100px] bg-base-100 shadow-xl rounded-none"
+                >
+                    <figure>
+                        <img
+                            class="w-[200px] h-[100px]"
+                            src={news.image_url}
+                            alt={news.source_name}
+                        />
+                    </figure>
+                    <div class="card-body">
+                        <h2 class="card-title">{news.title}</h2>
+                        <p>{news.text}</p>
+                    </div>
                 </div>
-            </div>
+            </a>
         {/each}
     {:catch error}
         <div class="alert alert-error shadow-lg">

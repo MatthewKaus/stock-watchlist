@@ -6,8 +6,10 @@
   import Home from "./pages/Home.svelte";
   import SignIn from "./pages/SignIn.svelte";
   import SignUp from "./pages/SignUp.svelte";
-  import StockView from "./components/StockView.svelte";
-  import NewsView from "./components/NewsView.svelte";
+  // import StockView from "./components/StockView.svelte";
+  // import NewsView from "./components/NewsView.svelte";
+
+  // import Testing from "./components/Testing.svelte";
 
   // Svelte routing
   import Router from "svelte-spa-router";
