@@ -6,10 +6,7 @@
   import Home from "./pages/Home.svelte";
   import SignIn from "./pages/SignIn.svelte";
   import SignUp from "./pages/SignUp.svelte";
-  // import StockView from "./components/StockView.svelte";
-  // import NewsView from "./components/NewsView.svelte";
-
-  // import Testing from "./components/Testing.svelte";
+  import About from "./pages/About.svelte";
 
   // Svelte routing
   import Router from "svelte-spa-router";
@@ -18,6 +15,7 @@
     "/dashboard": Dashboard,
     "/signin": SignIn,
     "/signup": SignUp,
+    "/about": About,
   };
 
   // ApolloClient
@@ -29,7 +27,6 @@
     cache: new InMemoryCache(),
   });
   setClient(client);
-
 </script>
 
 <TailwindCSS />

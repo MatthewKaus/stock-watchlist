@@ -19,7 +19,7 @@
     let companyName = "";
 
     async function fetchChartJSON() {
-        const URL = `https://cloud.iexapis.com/stable/stock/${symbol}/chart/1d?token=${token}`;
+        const URL = `https://cloud.iexapis.com/stable/stock/${symbol}/chart/10d?token=${token}`;
         const response = await fetch(URL);
 
         xValues.length = 0;

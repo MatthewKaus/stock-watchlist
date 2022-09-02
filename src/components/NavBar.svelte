@@ -50,20 +50,6 @@
                 tabindex="0"
                 class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-                <!-- <form on:submit|preventDefault={handleSubmit}>
-                    <div class="form-control">
-                        <input
-                            type="text"
-                            placeholder="Search"
-                            class="input input-bordered w-full"
-                            id="search"
-                            name="search"
-                            on:change={handleChange}
-                            on:blur={handleChange}
-                            bind:value={$form.symbol}
-                        />
-                    </div>
-                </form> -->
                 <AutoComplete
                     class="input input-bordered w-full"
                     items={stockData}
@@ -75,8 +61,7 @@
                     keywordsFunction={(stock) =>
                         stock.name + " " + stock.ticker}
                 />
-
-                <!-- <li><a href="./">Lists</a></li> -->
+                <li><a href="/#/about">About</a></li>
                 <li><button on:click={Auth.logout}>Logout</button></li>
             </ul>
         </div>
@@ -88,19 +73,6 @@
     <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal p-0">
             <div class="navbar-center">
-                <!-- <form on:submit|preventDefault={handleSubmit}>
-                    <div class="form-control"> -->
-                <!-- <input
-                            type="text"
-                            placeholder="Search"
-                            class="input input-bordered w-full"
-                            id="search"
-                            name="search"
-                            on:change={handleChange}
-                            on:blur={handleChange}
-                            bind:value={$form.symbol}
-                        /> -->
-
                 <AutoComplete
                     class="input input-bordered w-full"
                     items={stockData}
@@ -112,14 +84,12 @@
                     keywordsFunction={(stock) =>
                         stock.name + " " + stock.ticker}
                 />
-                <!-- </div>
-                </form> -->
             </div>
         </ul>
     </div>
     <div class="navbar-end hidden lg:flex">
         <ul class="menu menu-horizontal p-0">
-            <!-- <li><a href="./">Lists</a></li> -->
+            <li><a href="/#/about">About</a></li>
             <li><button on:click={Auth.logout}>Logout</button></li>
         </ul>
     </div>
