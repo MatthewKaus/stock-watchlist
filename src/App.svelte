@@ -16,6 +16,7 @@
     "/signin": SignIn,
     "/signup": SignUp,
     "/about": About,
+    "*": Home
   };
 
   // ApolloClient

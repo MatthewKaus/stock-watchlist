@@ -17,9 +17,9 @@
             <div class="max-w-md">
                 <h1 class="mb-5 text-5xl font-bold">Stock WatchList</h1>
                 <p class="mb-5">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Aliquid enim sed molestiae debitis placeat perspiciatis
-                    reiciendis error nemo laudantium numquam quia, nam
+                    Stock WatchList is an app that allows you to look up stock
+                    names, to be presented both a visual graph of the stock as
+                    well as the current news articles of that stock.
                 </p>
 
                 {#if Auth.loggedIn()}
