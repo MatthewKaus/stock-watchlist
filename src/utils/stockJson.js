@@ -1,4 +1,4 @@
-export const data = [
+export const stockData = [
     { "name": "3M", "ticker": "MMM" },
     { "name": "A. O. Smith", "ticker": "AOS" },
     { "name": "Abbott Laboratories", "ticker": "ABT" },
