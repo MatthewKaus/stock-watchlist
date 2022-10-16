@@ -23,7 +23,7 @@
         <div class="flex">
             <div class="flex flex-col w-full border-opacity-50">
                 <div
-                    class="grid md:min-h-[1/2] card bg-base-300 rounded-box place-items-center"
+                    class="grid md:min-h-[1/2] card bg-base-300 rounded-box place-items-center items-stretch"
                 >
                     <StockView {symbol} />
                 </div>
