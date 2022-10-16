@@ -8,6 +8,7 @@
   import Auth from "../utils/auth";
 
   const addUser = mutation(ADD_USER);
+  let loading = false;
 
   const nextPage = () => {
     push("/dashboard");
@@ -15,10 +16,13 @@
 
   const submit = async (values) => {
     try {
+      loading = true;
       const data = await addUser({ variables: { ...values } });
       Auth.login(data.data.addUser.token);
+      loading = false;
       nextPage();
     } catch (error) {
+      loading = false;
       console.log(error);
       alert(error);
     }
@@ -123,6 +127,9 @@
               </p>
             </label>
           </div>
+          {#if loading}
+            <progress class="progress progress-primary" />
+          {/if}
         </div>
       </div>
     </div>
