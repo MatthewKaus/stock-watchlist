@@ -47,7 +47,7 @@
   {:then news}
     {#each news as news, i}
       <div class="p-1 max-w-[1100px] lg:min-w-[1100px]">
-        <a href={news.news_url}>
+        <a href={news.news_url} target="_blank">
           <div
             class="card md:card-side w-full bg-base-100 shadow-xl rounded-none"
           >
